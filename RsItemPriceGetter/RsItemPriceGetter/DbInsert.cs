@@ -17,7 +17,7 @@ namespace RsItemPriceGetter
                 string server = "localhost";
                 string database = "items";
                 string uid = "root";
-                string password = "082490";
+                string password = "pwd";
 
            
                 string cs = "SERVER=" + server + ";" + "DATABASE=" +

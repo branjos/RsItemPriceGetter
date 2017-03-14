@@ -14,8 +14,8 @@ namespace RsItemPriceGetter
             {
                 int price = p.getPrice(itemId);
 
-                string server = "rsitemdb.cyqfdr3b1en3.us-east-1.rds.amazonaws.com";
-                string database = "items";
+                string server = "xxxxxxx";
+                string database = "xxxxx";
                 string uid = "xxxxx";
                 string password = "xxxxx";
 

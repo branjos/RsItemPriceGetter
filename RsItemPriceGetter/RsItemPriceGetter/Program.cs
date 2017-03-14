@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace RsItemPriceGetter
 {
@@ -10,6 +11,7 @@ namespace RsItemPriceGetter
 
             ItemList list = new ItemList();
             DbInsert insert = new DbInsert();
+            Task t = new Task();
             
             //add all items to one list
             List<string> allItems = new List<string>();

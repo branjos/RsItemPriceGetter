@@ -27,7 +27,7 @@ namespace RsItemPriceGetter
         {
 
             //checks to see if i is greater than list size, if so returns i to 0
-            if (i > allItems.Count)
+            if (i >= allItems.Count)
             {
                 i = 0;
             }

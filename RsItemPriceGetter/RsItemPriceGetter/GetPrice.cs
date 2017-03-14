@@ -24,19 +24,21 @@ namespace RsItemPriceGetter
                 string[] csv = url.Split(',');
 
                 price = csv[csv.Length - 1].Split(':');
+
+                if (url == null)
+                {
+                    goldPieces = 0;
+                }
+                else
+                {
+                    goldPieces = Int32.Parse(price[1]);
+                }
             }
             catch(WebException e)
             {
                 Console.WriteLine(e);
             }
-            if(Int32.Parse(price[1]) == null)
-            {
-                goldPieces = 0;
-            }
-            else
-            {
-                goldPieces = Int32.Parse(price[1]);
-            }
+            
             return goldPieces;
         }
     }

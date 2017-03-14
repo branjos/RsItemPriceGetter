@@ -1,39 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace RsItemPriceGetter
 {
     class Program
     {
+        static int i = 0;
+        static List<string> allItems = new List<string>();
+
         static void Main(string[] args)
         {
 
-            ItemList list = new ItemList();
-            DbInsert insert = new DbInsert();
-            Task t = new Task();
+            ItemList list = new ItemList();        
             
             //add all items to one list
-            List<string> allItems = new List<string>();
             allItems.AddRange(list.HerbloreItems);
 
-            while (true)
+            //timer
+            var timer = new Timer(e => iterate(),
+                null, 0, Convert.ToInt32(TimeSpan.FromSeconds(60).TotalMilliseconds));
+
+            Console.ReadLine();            
+        }
+        public static void iterate()
+        {
+
+            //checks to see if i is greater than list size, if so returns i to 0
+            if (i > allItems.Count)
             {
-                for(int i = 0; i < allItems.Count; ++i)
-                {
-                    //checks to see if i is greater than list size, if so returns i to 0
-                    if (i >= allItems.Count)
-                    {
-                        i = 0;
-                        break;
-                    }
+                i = 0;
+            }
 
-                    //calls dbInsert to do its thing
-                    insert.putInDb(allItems[i]);
+            DbInsert insert = new DbInsert();
 
-                    System.Threading.Thread.Sleep(30000);
-                }
-            }            
+            //calls dbInsert to do its thing
+            insert.putInDb(allItems[i]);
+            ++i;
         }
     }
 }
